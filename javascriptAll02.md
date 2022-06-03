@@ -64,7 +64,7 @@ function sayHi(name = 'Codeit') {
 
 sayHi('JavaScript'); // Hi! JavaScript
 sayHi(); // Hi! Codeit
-``
+```
 ### arguments 객체
 자바스크립트 함수 안에는 arguments라는 독특한 객체가 존재합니다.
 arguments 객체는 함수를 호출할 때 전달한 아규먼트들을 배열의 형태로 모아둔 유사 배열 객체인데요. 특히, 함수를 호출할 때 전달되는 아규먼트의 개수가 불규칙적일 때 유용하게 활용될 수 있습니다.
@@ -80,7 +80,7 @@ printArguments('Young', 'Mark', 'Koby');
 ```
 참고로 arguments라는 객체를 활용하고자 한다면 함수 안에서 사용할 파라미터나 변수, 함수의 이름을 arguments라고 짓는 것은 피하는게 좋겠죠?
 
-###Rest Parameter
+### Rest Parameter
 arguments 객체를 이용하는 것 말고도 불규칙적으로 전달되는 아규먼트를 다루는 방법이 있는데요. 파라미터 앞에 마침표 세 개를 붙여주면, 여러 개로 전달되는 아규먼트들을 배열로 다룰 수가 있게 됩니다.
 그리고 arguments객체는 유사 배열이기 때문에 배열의 메소드를 활용할 수 없는 반면, rest parameter는 배열이기 때문에 배열의 메소드를 자유롭게 사용할 수 있다는 장점이 있습니다.
 ```
@@ -92,6 +92,19 @@ function printArguments(...args) {
 }
 
 printArguments('Young', 'Mark', 'Koby');
+```
+```
+function sum(...theArgs) {
+  return theArgs.reduce((previous, current) => {
+    return previous + current;
+  });
+}
+
+console.log(sum(1, 2, 3));
+// expected output: 6
+
+console.log(sum(1, 2, 3, 4));
+// expected output: 10
 ```
 rest parameter는 다른 일반 파라미터들과 함께 사용될 수도 있는데요.
 ```
@@ -160,5 +173,7 @@ const user = {
     return `${this.firstName} ${this.lastName}`;
   },
 };
+
+console.log(user.getFullName());
 ```
-console.log(user.getFullName()); // getFullName 안에서의 this는  getFullName을 호출한 user객체가 담긴다!
+ // getFullName 안에서의 this는  getFullName을 호출한 user객체가 담긴다!
